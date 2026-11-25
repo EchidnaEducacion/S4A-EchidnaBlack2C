@@ -1,87 +1,91 @@
-# S4A EchidnaBlack2C for Snap!
+# S4A EchidnaBlack2C para Snap!
 
-This repository contains a Snap! project/library that adds a custom **`S4A Connector`** block category for the **EchidnaBlack2C** board.
+Este repositorio contiene un proyecto o biblioteca de Snap! que añade una categoría de bloques personalizada, **`S4A Connector`**, para la placa **EchidnaBlack2C**.
 
-The library is designed to connect Snap! with the board through **SA5 Firmata** and expose both:
+La biblioteca está diseñada para conectar Snap! con la placa mediante **SA5 Firmata** y ofrecer:
 
-- generic board I/O blocks
-- board-specific blocks for the EchidnaBlack2C hardware
+- bloques genéricos de entrada y salida de la placa
+- bloques específicos para el hardware de la EchidnaBlack2C
 
-Snap! is a visual programming language developed by UC Berkeley:
+Snap! es un lenguaje de programación visual desarrollado por la Universidad de California en Berkeley:
 <https://snap.berkeley.edu/>
 
-Echidna project website:
+Sitio web del proyecto Echidna:
 <https://echidna.es>
 
-Official manual:
+Manual oficial:
 <https://snap.berkeley.edu/snap/help/SnapManual.pdf>
 
-## Repository contents
+## Contenido del repositorio
 
-- `S4A-EchidnaBlack2C.xml`: main Snap! library/project with the custom blocks.
-- `Test-EchidnaBlocks-Snap.xml`: example/test project that exercises the available blocks.
+- `S4A-EchidnaBlack2C.xml`: biblioteca o proyecto principal de Snap! con los bloques personalizados.
+- `Test-EchidnaBlocks-Snap.xml`: proyecto de ejemplo y prueba que utiliza los bloques disponibles.
 
-## What this library adds
+## Qué añade esta biblioteca
 
-The XML project defines a custom **`S4A Connector`** palette with blocks for:
+El proyecto XML define una paleta personalizada, **`S4A Connector`**, con bloques para:
 
-- connection status (`board connected?`)
-- digital output and input
-- analog reading
-- PWM output
-- servo control
-- I2C read/write/send operations
-- tone, pulse out, pulse in, and ping-style sensor operations
-- Nunchuk and DHT11 helper blocks
+- estado de la conexión (`board connected?`)
+- entrada y salida digitales
+- lectura analógica
+- salida PWM
+- control de servos
+- operaciones de lectura, escritura y envío por I2C
+- operaciones de tono, salida de pulsos, entrada de pulsos y sensores de tipo ping
+- bloques auxiliares para Nunchuk y DHT11
 
-It also includes higher-level blocks tailored to the **EchidnaBlack2C** board, such as:
+También incluye bloques de más alto nivel adaptados a la placa **EchidnaBlack2C**, como:
 
-- onboard LEDs and RGB LED control
-- buzzer control
-- servo outputs on predefined pins
-- board buttons
-- MkMk touch/input checks
-- joystick reading
-- accelerometer reading
-- light sensor reading
-- temperature reading
-- microphone reading
-- generic analog input reading on supported pins
+- control de los LED integrados y del LED RGB
+- control del zumbador
+- salidas para servos en pines predefinidos
+- botones de la placa
+- comprobaciones de entrada y contacto MkMk
+- lectura del joystick
+- lectura del acelerómetro
+- lectura del sensor de luz
+- lectura de la temperatura
+- lectura del micrófono
+- lectura de entradas analógicas genéricas en los pines compatibles
 
-## Requirements
+## Requisitos
 
-To use this library you need:
+Para usar esta biblioteca necesitas:
 
-- Snap! compatible with importing/opening project XML files
-- Google Chrome or Chromium, so Snap! can access the board over USB
-- an **EchidnaBlack2C** board
-- the board firmware/bridge expected by the project: **SA5 Firmata**
-- access to the `s4aConn` connector module referenced by the project
+- una versión de Snap! compatible con la importación o apertura de archivos XML de proyectos
+- Google Chrome o Chromium, para que Snap! pueda acceder a la placa mediante USB
+- una placa **EchidnaBlack2C**
+- el firmware o puente para la placa que requiere el proyecto: **SA5 Firmata**
+- acceso al módulo conector `s4aConn` al que hace referencia el proyecto
 
-The project XML points to:
+El XML de esta biblioteca menciona «SA5 Firmata»; Echidna Educación publica el firmware de la placa con el nombre **StandardFirmata**. La EchidnaBlack2C ya lo trae cargado de fábrica, por lo que normalmente no necesitas instalarlo. Si lo has sustituido por otro programa, puedes descargar el [firmware StandardFirmata para la EchidnaBlack2C](https://github.com/EchidnaEducacion/EchidnaBlack2C_StdFirm) desde el repositorio de Echidna Educación y volver a cargarlo en la placa.
+
+El XML del proyecto apunta a:
 
 - `libraries/s4aConn/init.js`
 
-So the Snap! environment you use must provide that connector support.
+Por tanto, el entorno de Snap! que utilices debe proporcionar ese conector. El [entorno original de Snap!](https://snap.berkeley.edu/snap/snap.html) cumple todos los requisitos indicados para el entorno y es el que se recomienda utilizar. Ábrelo en Chrome o Chromium y conecta la placa EchidnaBlack2C con SA5 Firmata.
 
-## How to use it
+## Cómo utilizarla
 
-1. Open Snap!.
-2. Load or import `S4A-EchidnaBlack2C.xml`.
-3. Use Chrome or Chromium, since the USB connection requires a browser that supports it.
-4. Connect the EchidnaBlack2C board with the expected SA5 Firmata setup.
-5. Click the `Connect` button in Snap! to establish the USB connection.
-6. Look for the **`S4A Connector`** category in the palette.
-7. Use `board connected ?` to verify communication before running hardware scripts.
+1. Abre Snap!.
+2. Carga o importa `S4A-EchidnaBlack2C.xml`.
+3. Utiliza Chrome o Chromium, ya que la conexión USB requiere un navegador que la admita.
+4. Conecta la placa EchidnaBlack2C con Firmata instalado (viene de fábrica).
+5. Haz clic en el botón `Connect` de Snap! para establecer la conexión USB.
+6. Busca la categoría **`S4A Connector`** en la paleta.
+7. Utiliza `board connected ?` para comprobar la comunicación antes de ejecutar programas que interactúen con el hardware.
 
-If you want a ready-made example, open `Test-EchidnaBlocks-Snap.xml`.
+Si quieres un ejemplo listo para usar, abre `Test-EchidnaBlocks-Snap.xml`.
 
-## Notes
+Consulta el [tutorial ilustrado de conexión](docs/tutorial/README.md) para seguir la importación del proyecto en Chrome y la selección del puerto USB paso a paso.
 
-This repository stores the library as standard Snap! project XML, which makes it easy to:
+## Notas
 
-- share with educators and students
-- import into Snap! projects
-- inspect or extend the block definitions manually if needed
+Este repositorio almacena la biblioteca como un proyecto XML estándar de Snap!, lo que facilita:
 
-The included test project is useful as a quick validation script for the board sensors and actuators.
+- compartirla con docentes y estudiantes
+- importarla a proyectos de Snap!
+- inspeccionar o ampliar manualmente las definiciones de los bloques si es necesario
+
+El proyecto de prueba incluido sirve como programa de validación rápida de los sensores y actuadores de la placa.
